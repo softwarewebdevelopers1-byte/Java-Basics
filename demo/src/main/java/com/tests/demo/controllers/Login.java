@@ -20,4 +20,3 @@ public class Login {
         return "Paid to the account!";
     }
 }
-
