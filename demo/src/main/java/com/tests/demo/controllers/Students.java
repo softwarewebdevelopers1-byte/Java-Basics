@@ -24,6 +24,9 @@ public class Students {
 
   @Override
   public String toString() {
-    return "Students" + " " + "{" + "id:" + id + "}";
+    return "Students" + " " + "{" + "id:" + id + " " + "Admission:" + " " + Admission + " " + "FullName:" + " "
+        + fullName
+        + "}";
   }
 }
+

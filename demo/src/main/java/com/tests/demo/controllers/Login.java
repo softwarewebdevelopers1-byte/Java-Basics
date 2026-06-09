@@ -23,8 +23,10 @@ public class Login {
         pServices.pay(20);
         List<Students> student = students.getStudents();
         student.forEach(s -> {
-            System.out.println(s.toString());
+            System.out.println("Data fetched is " + s.toString());
         });
         return student.toString();
     }
 }
+
+
