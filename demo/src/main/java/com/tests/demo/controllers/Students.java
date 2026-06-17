@@ -16,17 +16,27 @@ public class Students {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "Adm", unique = true, nullable = false, length = 100)
+  @Column(name = "adm", unique = true, nullable = false, length = 100)
   private int Admission;
 
-  @Column(name = "fName")
+  @Column(name = "f_name")
   private String fullName;
+
+  public Students() {
+  }
+
+  public void setAdmission(int adm) {
+    this.Admission = adm;
+  }
+
+  public void setFullName(String name) {
+    this.fullName = name;
+  }
 
   @Override
   public String toString() {
-    return "Students" + " " + "{" + "id:" + id + " " + "Admission:" + " " + Admission + " " + "FullName:" + " "
+    return "Student" + ":" + "{" + "id:" + id + " " + "Admission:" + " " + Admission + " " + "FullName:" + " "
         + fullName
         + "}";
   }
 }
-
