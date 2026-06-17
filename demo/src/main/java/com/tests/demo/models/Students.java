@@ -21,4 +21,12 @@ public class Students {
 
     @Column(name = "admission")
     Long adm;
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setAdm(Long adm) {
+        this.adm = adm;
+    }
 }
