@@ -1,5 +1,24 @@
 package com.tests.demo.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+// creating jpa data persistency class 
+@Entity
+@Table(name = "students")
 public class Students {
-    
+    // id to be generated in the database
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    Long id;
+
+    @Column(name = "full_name")
+    String fullName;
+
+    @Column(name = "admission")
+    Long adm;
 }

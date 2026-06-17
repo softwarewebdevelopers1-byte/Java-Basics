@@ -1,5 +1,7 @@
 package com.tests.demo.types;
 
-public interface StudentsInterface {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StudentsInterface extends JpaRepository{
 
 }
