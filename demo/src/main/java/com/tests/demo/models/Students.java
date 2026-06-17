@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 public class Students {
     // id to be generated in the database
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "full_name")
