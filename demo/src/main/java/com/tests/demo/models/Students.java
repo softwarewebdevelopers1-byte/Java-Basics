@@ -19,7 +19,7 @@ public class Students {
     @Column(name = "full_name")
     String fullName;
 
-    @Column(name = "admission")
+    @Column(name = "admission", unique = true)
     Long adm;
 
     public void setFullName(String fullName) {
