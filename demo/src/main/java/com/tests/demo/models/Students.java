@@ -17,7 +17,7 @@ public class Students {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    
+
     @JsonProperty("Name")
     @Column(name = "full_name")
     String fullName;
@@ -26,11 +26,11 @@ public class Students {
     @Column(name = "admission", unique = true)
     Long adm;
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public Students() {
     }
 
-    public void setAdm(Long adm) {
-        this.adm = adm;
+    public Students(String fullName, Long Adm) {
+        this.fullName = fullName;
+        this.adm = Adm;
     }
 }
