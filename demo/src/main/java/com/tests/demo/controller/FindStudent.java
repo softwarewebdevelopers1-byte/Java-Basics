@@ -29,4 +29,11 @@ public class FindStudent {
     public List<Students> GetAllStudents() {
         return student.findAll();
     }
+
+    // getting all students with a specific name
+    @GetMapping("/get/all/students-fullname/{name}")
+    public List<Students> GetStudentsByFullName(@PathVariable("name") String name) {
+        return student.findAllByFullNameContaining(name);
+    }
+
 }
