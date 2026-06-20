@@ -2,6 +2,7 @@ package com.tests.demo.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.CascadeType;
@@ -21,6 +22,7 @@ public class School {
 
     // create relationship school--> students
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Students> students;
 
     public School() {
