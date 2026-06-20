@@ -2,11 +2,13 @@ package com.tests.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 // creating jpa data persistency class 
@@ -25,6 +27,10 @@ public class Students {
     @JsonProperty("Admission")
     @Column(name = "admission", unique = true)
     Long adm;
+
+    // creating relationship
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private StudentProfile profile;
 
     public Students() {
     }
