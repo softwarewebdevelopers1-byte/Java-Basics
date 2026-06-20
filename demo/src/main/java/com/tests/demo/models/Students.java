@@ -36,7 +36,7 @@ public class Students {
     // create a relationship between students and school
     @ManyToOne
     @JoinColumn(name = "school_id")
-    School school;
+    private School school;
 
     public Students() {
     }
@@ -44,5 +44,21 @@ public class Students {
     public Students(String fullName, Long Adm) {
         this.fullName = fullName;
         this.adm = Adm;
+    }
+
+    public void setSchool(School name) {
+        this.school = name;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public School getSchool() {
+        return school;
     }
 }

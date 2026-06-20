@@ -19,14 +19,38 @@ public class School {
     @JsonProperty("school")
     String schoolName;
 
-    // create relationshpi school--> students
+    // create relationship school--> students
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
-    List<Students> students;
+    private List<Students> students;
 
     public School() {
     }
 
     public School(String name) {
         this.schoolName = name;
+    }
+
+    public void setStudents(List<Students> students) {
+        this.students = students;
+    }
+
+    public List<Students> getStudents() {
+        return students;
+    }
+
+    public void setSchoolName(String name) {
+        this.schoolName = name;
+    }
+
+    public String getSchoolName() {
+        return this.schoolName;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }
