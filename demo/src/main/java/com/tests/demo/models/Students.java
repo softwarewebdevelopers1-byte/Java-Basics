@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -31,6 +33,10 @@ public class Students {
     // creating relationship
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private StudentProfile profile;
+    // create a relationship between students and school
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    School school;
 
     public Students() {
     }
