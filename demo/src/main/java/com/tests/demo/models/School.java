@@ -1,5 +1,8 @@
 package com.tests.demo.models;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -12,8 +15,8 @@ public class School {
     String schoolName;
 
     // create relationshpi school--> students
-    @OneToMany(mappedBy = "school")
-    Students students;
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+    List<Students> students;
 
     public School() {
     }
