@@ -32,8 +32,9 @@ public class FindStudent {
 
     // finding all students
     @GetMapping("/get/all/students")
-    public List<Student> GetAllStudents() {
-        return student.findAll();
+    public List<StudentResponseDTO> GetAllStudents() {
+        return student.findAll().stream().map(student -> new StudentResponseDTO(student.getFullName(), student.getId()))
+                .toList();
     }
 
     // getting all students with a specific name

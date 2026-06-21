@@ -9,7 +9,6 @@ import com.tests.demo.models.School;
 import com.tests.demo.types.SchoolInterface;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -34,14 +33,9 @@ public class SchoolController {
         return school;
     }
 
-    private SchoolDTO toSchoolDTO(School school) {
-        return new SchoolDTO(school.getSchoolName());
-
-    }
-
     @GetMapping("/schools")
     public List<SchoolDTO> getMethodName() {
-        return schoolInterface.findAll().stream().map(this::toSchoolDTO).collect(Collectors.toList());
+        return schoolInterface.findAll().stream().map(school -> new SchoolDTO(school.getSchoolName())).toList();
     }
 
 }
