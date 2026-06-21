@@ -23,7 +23,7 @@ public class School {
     // create relationship school--> students
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Students> students;
+    private List<Student> students;
 
     public School() {
     }
@@ -32,11 +32,11 @@ public class School {
         this.schoolName = name;
     }
 
-    public void setStudents(List<Students> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 
-    public List<Students> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 

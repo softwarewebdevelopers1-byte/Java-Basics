@@ -4,7 +4,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tests.demo.models.Students;
+import com.tests.demo.DTO.StudentDTO;
+import com.tests.demo.models.School;
+import com.tests.demo.models.Student;
 import com.tests.demo.types.StudentsInterface;
 
 @RestController
@@ -17,7 +19,20 @@ public class SignUp {
     }
 
     @PostMapping("/create-account/student")
-    public Students CreateAccount(@RequestBody Students student) {
-        return students.save(student);
+    public Student CreateAccount(@RequestBody StudentDTO dto) {
+        Student studentDTO = toStudent(dto);
+        return students.save(studentDTO);
+    }
+
+    private Student toStudent(StudentDTO dto) {
+        var student = new Student();
+        var school = new School();
+        student.setFullName(dto.fullName());
+        student.setAdm(dto.adm());
+
+        school.setId(dto.school_id());
+        // assign school object to student
+        student.setSchool(school);
+        return student;
     }
 }

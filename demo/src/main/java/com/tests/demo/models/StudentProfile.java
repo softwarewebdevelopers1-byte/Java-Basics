@@ -21,7 +21,7 @@ public class StudentProfile {
     @JoinColumn(name = "student_id")
     // the student variable here is refferenced by one to one mapping in student
     // class
-    private Students student;
+    private Student student;
 
     public StudentProfile() {
     }

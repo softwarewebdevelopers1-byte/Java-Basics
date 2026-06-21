@@ -1,7 +1,6 @@
 package com.tests.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,17 +16,15 @@ import jakarta.persistence.Table;
 // creating jpa data persistency class 
 @Entity
 @Table(name = "students")
-public class Students {
+public class Student {
     // id to be generated in the database
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @JsonProperty("Name")
     @Column(name = "full_name")
     String fullName;
 
-    @JsonProperty("Admission")
     @Column(name = "admission", unique = true)
     Long adm;
 
@@ -40,16 +37,36 @@ public class Students {
     @JsonBackReference
     private School school;
 
-    public Students() {
+    public Student() {
     }
 
-    public Students(String fullName, Long Adm) {
+    public Student(String fullName, Long Adm) {
         this.fullName = fullName;
         this.adm = Adm;
     }
 
+    public void setAdm(Long adm) {
+        this.adm = adm;
+    }
+
+    public Long getAdm() {
+        return this.adm;
+    }
+
+    public void setFullName(String name) {
+        this.fullName = name;
+    }
+
+    public String getFullName() {
+        return this.fullName;
+    }
+
     public void setSchool(School name) {
         this.school = name;
+    }
+
+    public School getSchool() {
+        return school;
     }
 
     public void setId(Long id) {
@@ -60,7 +77,4 @@ public class Students {
         return id;
     }
 
-    public School getSchool() {
-        return school;
-    }
 }

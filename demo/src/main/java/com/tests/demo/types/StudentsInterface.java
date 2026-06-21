@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.tests.demo.models.Students;
+import com.tests.demo.models.Student;
 
-public interface StudentsInterface extends JpaRepository<Students, Long> {
-    List<Students> findAllByFullNameContaining(String FullName);
+public interface StudentsInterface extends JpaRepository<Student, Long> {
+    List<Student> findAllByFullNameContaining(String FullName);
 }
