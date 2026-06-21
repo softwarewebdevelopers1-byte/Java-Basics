@@ -2,6 +2,7 @@ package com.tests.demo.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tests.demo.DTO.StudentResponseDTO;
 import com.tests.demo.models.Student;
 import com.tests.demo.types.StudentsInterface;
 
@@ -18,10 +19,15 @@ public class FindStudent {
         this.student = studentsInterface;
     }
 
-    // findind single student by id
+    // finding single student by id
     @GetMapping("/get/student/{id}")
-    public Student GetStudents(@PathVariable("id") Long id) {
-        return student.findById(id).orElse(new Student());
+    public StudentResponseDTO GetStudents(@PathVariable("id") Long id) {
+
+        return toStudentResponse(student.findById(id).orElse(new Student()));
+    }
+
+    private StudentResponseDTO toStudentResponse(Student student) {
+        return new StudentResponseDTO(student.getFullName(), student.getAdm());
     }
 
     // finding all students
