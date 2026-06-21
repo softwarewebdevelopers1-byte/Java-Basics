@@ -4,13 +4,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tests.demo.DTO.SchoolDTO;
 import com.tests.demo.models.School;
 import com.tests.demo.types.SchoolInterface;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
 
 @RestController
 public class SchoolController {
@@ -21,12 +22,26 @@ public class SchoolController {
     }
 
     @PostMapping("/schools")
-    public School CreateSchool(@RequestBody School school) {
-        return schoolInterface.save(school);
+    public SchoolDTO CreateSchool(@RequestBody SchoolDTO schoolDTO) {
+        var school = toSchool(schoolDTO);
+        schoolInterface.save(school);
+        return schoolDTO;
     }
+
+    private School toSchool(SchoolDTO dto) {
+        var school = new School();
+        school.setSchoolName(dto.schoolName());
+        return school;
+    }
+
+    private SchoolDTO toSchoolDTO(School school) {
+        return new SchoolDTO(school.getSchoolName());
+
+    }
+
     @GetMapping("/schools")
-    public List<School> getMethodName() {
-        return schoolInterface.findAll();
+    public List<SchoolDTO> getMethodName() {
+        return schoolInterface.findAll().stream().map(this::toSchoolDTO).collect(Collectors.toList());
     }
-    
+
 }
