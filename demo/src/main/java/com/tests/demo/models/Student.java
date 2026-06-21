@@ -1,6 +1,5 @@
 package com.tests.demo.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -34,7 +33,6 @@ public class Student {
     // create a relationship between students and school
     @ManyToOne
     @JoinColumn(name = "school_id")
-    @JsonBackReference
     private School school;
 
     public Student() {
