@@ -1,5 +1,10 @@
 package com.tests.demo.DTO;
 
-public record StudentDTO(String fullName, Long adm, Integer school_id) {
+import jakarta.validation.constraints.NotEmpty;
+
+public record StudentDTO(
+                @NotEmpty(message = "Name field should not be empty") String fullName,
+                Long adm,
+                Integer school_id) {
 
 }

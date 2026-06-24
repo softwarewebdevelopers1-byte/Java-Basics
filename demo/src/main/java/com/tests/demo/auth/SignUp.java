@@ -9,6 +9,8 @@ import com.tests.demo.models.School;
 import com.tests.demo.models.Student;
 import com.tests.demo.types.StudentsInterface;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class SignUp {
     private final StudentsInterface students;
@@ -19,7 +21,8 @@ public class SignUp {
     }
 
     @PostMapping("/create-account/student")
-    public Student CreateAccount(@RequestBody StudentDTO dto) {
+    public Student CreateAccount(
+            @Valid @RequestBody StudentDTO dto) {
         Student studentDTO = toStudent(dto);
         return students.save(studentDTO);
     }
